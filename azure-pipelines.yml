@@ -38,3 +38,23 @@ steps:
    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
    ArtifactName: 'drop'
    publishLocation: 'Container'
+   
+  env:
+   CONTENTFUL_SPACE_ID: 'zb26neep7qnv'
+   CONTENTFUL_ACCESS_TOKEN: 'A8Or04TqyfUAgzFV7Cl3gdNb4pwiuaezZ0Hijrj7UvQ'
+   CONTENTFUL_PREVIEW_ACCESS_TOKEN: '9ywPioMOue0X9v7QvLy-IkspyVzBqwdgpA1B73aCATA'
+   CONTENTFUL_PREVIEW_SECRET: 'content'
+
+- task: ArchiveFiles@2
+  inputs:
+   rootFolderOrFile: '.'
+   includeRootFolder: false
+   archiveType: 'zip'
+   archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+   replaceExistingArchive: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+   PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+   ArtifactName: 'drop'
+   publishLocation: 'Container'
