@@ -19,20 +19,20 @@ export default function Banner(props) {
             Learn more
           </button> 
       </div>
-      <div class="absolute top-0 right-0 flex w-full h-full">
-      <div class="w-1/3 h-full bg-blue-700"></div>
-      <div class="relative w-1/3">
+      <div className="absolute top-0 right-0 flex w-full h-full">
+      <div className="w-1/3 h-full bg-blue-700"></div>
+      <div className="relative w-1/3">
         <svg
           fill="currentColor"
           viewBox="0 0 100 100"
-          class="absolute inset-y-0 z-20 h-full text-blue-700"
+          className="absolute inset-y-0 z-20 h-full text-blue-700"
         >
           <polygon id="diagonal" points="0,0 0,100 50,100 0,0"></polygon>
         </svg>
         <svg
           fill="currentColor"
           viewBox="0 0 100 100"
-          class="absolute inset-y-0 z-10 h-full ml-3 text-blue-400 opacity-50"
+          className="absolute inset-y-0 z-10 h-full ml-3 text-blue-400 opacity-50"
         >
           <polygon points="0,0 0,100 50,100 005"></polygon>
           </svg>
