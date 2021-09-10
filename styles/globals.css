@@ -1,7 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 body {
-  background: #F4E640;
+  background: #FF6347;
   margin: 0;
   font-family: 'Roboto';
   font-size: 1.5em;  
@@ -54,3 +57,18 @@ footer {
   width: 100%;
   box-sizing: border-box;
 }
+.card {
+    Add shadows to create the "card" effect 
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+  On mouse-over, add a deeper shadow  
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+  Add some padding inside the card container  
+.container {
+  padding: 2px 16px;
+} */
