@@ -1,7 +1,7 @@
 import { createClient } from "contentful";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Image from "next/image";
-import Skeleton from "../../components/skeleton";
+import Skeleton from "../../components/Skeleton";
 import BlogBanner from '../../components/BlogBanner'
 
 const client = createClient({
