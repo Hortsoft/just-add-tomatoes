@@ -20,25 +20,6 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- env:
-   CONTENTFUL_SPACE_ID: '8s27tytzwtrj'
-   CONTENTFUL_ACCESS_TOKEN: 'HjT_z6HggNCGS1sG0lmq-uwXpC3ydF_jr73-70w67NU'
-   CONTENTFUL_PREVIEW_ACCESS_TOKEN: '0J6RrLUKOZIex_fL8EtT_Wo8jECpOAPzrT-r3SH4Tn8'
-
-- task: ArchiveFiles@2
- inputs:
-   rootFolderOrFile: '.'
-   includeRootFolder: false
-   archiveType: 'zip'
-   archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-   replaceExistingArchive: true
-
-- task: PublishBuildArtifacts@1
- inputs:
-   PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-   ArtifactName: 'drop'
-   publishLocation: 'Container'
-   
   env:
    CONTENTFUL_SPACE_ID: 'zb26neep7qnv'
    CONTENTFUL_ACCESS_TOKEN: 'A8Or04TqyfUAgzFV7Cl3gdNb4pwiuaezZ0Hijrj7UvQ'
