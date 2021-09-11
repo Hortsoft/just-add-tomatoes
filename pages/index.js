@@ -1,6 +1,6 @@
-import { createClient  } from 'contentful'
-import Banner from '../components/banner'
+import { createClient  } from 'contentful' 
 import RecipeCard from '../components/RecipeCard'
+import FP_Banner from '../components/FP_Banner';
 
 export async function getStaticProps() {
 
@@ -30,7 +30,8 @@ export default function Recipes({ blogposts }) {
    
   return (
     <>
-    <Banner />
+   
+    <FP_Banner title="Welcome" description="description"  />
     <div className="container my-12 mx-auto px-4 md:px-12">
     <div className="flex flex-wrap -mx-1 lg:-mx-4">
      {blogposts.map( blogpost => (
