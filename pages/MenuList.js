@@ -19,8 +19,7 @@ export async function getStaticProps() {
 
 export default function MenuList({ blogposts }) {
   return (
-    <div x-data="{ dropdownOpen: true }" class="relative my-32">
-  
+    <div x-data="{ dropdownOpen: true }" className="relative   inline-flex my-32">
     <div x-show="dropdownOpen" className="fixed inset-0 h-full w-full z-10">
       <div
         x-show="dropdownOpen"
@@ -30,7 +29,7 @@ export default function MenuList({ blogposts }) {
           <MenuLink key={blogpost.sys.id} blogpost={blogpost} />
         ))}
       </div>
-      </div>
+       </div>
     </div>
   );
 }
