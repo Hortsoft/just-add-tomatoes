@@ -1,4 +1,5 @@
 import { createClient  } from 'contentful' 
+
 import RecipeCard from '../components/RecipeCard'
 import FP_Banner from '../components/FP_Banner';
 
