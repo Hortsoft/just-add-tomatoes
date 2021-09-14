@@ -33,7 +33,7 @@ export default function Recipes({ blogposts }) {
     <>
    
     <FP_Banner title="Welcome" description="description"  />
-    <div className="container my-12 mx-auto px-4 md:px-12">
+    <div className="container my-12 mx-auto px-3 md:px-12">
     <div className="flex flex-wrap -mx-1 lg:-mx-4">
      {blogposts.map( blogpost => (
           <RecipeCard  key={blogpost.sys.id}  blogpost={blogpost}/> 
