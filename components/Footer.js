@@ -14,12 +14,7 @@ export default function Footer() {
             <div className="lg:w-1/3 md:w-1/2 w-full px-4">
               <h2 className="text-2xl font-bold">Quick links</h2>
               <nav className="list-none mb-10">
-                <li>
-                  {" "}
-                  <Link href="/">
-                  <a className="text-xl text-gray-600 hover:text-bold hover:text-sbtOrange hover:underline">First Link</a>
-                  </Link>
-                </li>
+              
                 <li>
                   {" "}
                   <Link href="/SignupForm">
@@ -32,7 +27,12 @@ export default function Footer() {
                   <a className="text-xl text-gray-600 hover:text-bold hover:text-sbtOrange hover:underline">MS Forms</a>
                   </Link>
                 </li>
-                
+                  <li>
+                  {" "}
+                  <Link href="/Video">
+                  <a className="text-xl text-gray-600 hover:text-bold hover:text-sbtOrange hover:underline">Video</a>
+                  </Link>
+                </li>
               </nav>
             </div>
 

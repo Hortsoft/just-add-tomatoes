@@ -53,17 +53,20 @@ export default function Navbar() {
             <a className="text-sbtBlue border-b-4 border-transparent hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium  ">
               Home
             </a>
-          </Link>
-
+          </Link> 
           <Link href="/MenuList">
             <a className="text-sbtBlue border-transparent border-b-4 hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium  ">
-              Rough Contenful Menu
+                Contentful Menu
             </a>
-          </Link>
-
+          </Link> 
           <Link href="/MSForms">
             <a className="text-sbtBlue border-transparent border-b-4 hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium  ">
-              MS Forms
+              Search  
+            </a>
+          </Link>
+          <Link href="/MSForms">
+            <a className="text-sbtBlue border-transparent border-b-4 hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium  ">
+              Events
             </a>
           </Link>
           <Link href="/">
