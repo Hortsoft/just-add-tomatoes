@@ -5,9 +5,9 @@ export default function FP_Banner(props) {
   const bannerItems = props;
 
   return (
-    <div className="relative h-64  overflow-hidden bg-blue-700">
+    <div className="relative h-64  overflow-hidden bg-sky-300">
       <div className="absolute z-30 flex w-full h-full">
-        <div className="relative z-30 w-5/6 px-6 py-8 text-white md:py-10 md:w-1/2">
+        <div className="relative z-10 w-5/6 px-6 py-8 text-white md:py-10 md:w-1/2">
           <h2 className="text-5xl">{bannerItems.title}</h2>
           <span></span> <br />
           

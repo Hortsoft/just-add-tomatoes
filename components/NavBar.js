@@ -1,86 +1,146 @@
-import { useState } from "react";
-import Link from "next/link";
+/* This example requires Tailwind CSS v2.0+ */
+import { Fragment } from 'react'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { BellIcon, MenuIcon, XIcon , search} from '@heroicons/react/outline'
+
+const navigation = [
+  { name: 'Home', href: '/', current: true },
+  { name: 'Menu ', href: '/MenuList_2', current: false },
+  { name: 'Events', href: '/Events', current: false },
+  { name: 'Search', href: '/Search', current: false },
+  { name: 'Contact us', href: '/ContactUs', current: false },
+]
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export default function Navbar() {
-  const [active, setActive] = useState(false);
-
-  const handleClick = () => {
-    setActive(!active);
-  };
   return (
-    <nav className="flex items-center flex-wrap bg-White p-3 ">
-      <Link href="/">
-        <a className="inline-flex items-center p-2 mr-4 ">
-          <svg
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            className="fill-current text-sbtBlue h-8 w-8 mr-2"
-          >
-            <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" />
-          </svg>
-          <span className="text-xl text-sbtBlue font-bold uppercase tracking-wide">
-            Bright Tomatoes
-          </span>
-        </a>
-      </Link>
-      <button
-        className=" inline-flex p-3 hover:bg-green-600 rounded lg:hidden text-white ml-auto hover:text-white outline-none"
-        onClick={handleClick}
-      >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </button>
-      {/*Note that in this div we will use a ternary operator to decide whether or not to display the content of the div  */}
-      <div
-        className={`${
-          active ? "" : "hidden"
-        }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
-      >
-        <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
-          <Link href="/">
-            <a className="text-sbtBlue border-b-4 border-transparent hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium  ">
-              Home
-            </a>
-          </Link> 
-          <Link href="/Search">
-            <a className="text-sbtBlue border-transparent border-b-4 hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium  ">
-                Search 
-            </a>
-          </Link> 
-          <Link href="/MenuList_2">
-            <a className="text-sbtBlue border-transparent border-b-4 hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium  ">
-              Menu 2  
-            </a>
-          </Link>
-          <Link href="/MenuList_2">
-            <a className="text-sbtBlue border-transparent border-b-4 hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium  ">
-              Events
-            </a>
-          </Link>
-          <Link href="/">
-            <a className="text-sbtBlue border-transparent border-b-4 hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium  ">
-              Contact us
-            </a>
-          </Link>
-          <Link href="https://canvas.instructure.com/login/canvas">
-            <a className="text-sbtBlue border-transparent border-b-4 hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium  ">
-              Canvas Login
-            </a>
-          </Link>
-        </div>
-      </div>
-    </nav>
-  );
+    <Disclosure as="nav" className="bg-white">
+      {({ open }) => (
+        <>
+          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 z-50 ">
+            <div className="relative flex items-center justify-between h-16">
+              <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                {/* Mobile menu button*/}
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <span className="sr-only">Open main menu</span>
+                  {open ? (
+                    <XIcon className="block h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
+              </div>
+              <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div className="flex-shrink-0 flex items-center">
+                <img
+                        className="h-10 w-10 "
+                        src="/images/logo.jpg"
+                        alt=""
+                      />
+                    <a
+                            href="#"
+                            className="text-sbtBlue text-xl font-extrabold"
+                          >
+                           Just add Tomatoes
+                          </a>
+                </div>
+                <div className="hidden sm:block sm:ml-6">
+                  <div className="flex space-x-4">
+                    {navigation.map((item) => (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className={classNames(
+                          item.current ? ' text-sbtBlue text-xl font-medium' : 'border-transparent hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium'
+                        )}
+                        aria-current={item.current ? 'page' : undefined}
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+               
+
+                {/* Profile dropdown */}
+                <Menu as="div" className="ml-3 relative z-50">
+                  <div>
+                    <Menu.Button className="bg-sky-200 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                      <span className="sr-only">Open user menu</span>
+                      <search className="h-10 w-10" aria-hidden="true" />
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="/PlayAVideo"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                              Video
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                            item 2
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                             item 3
+                          </a>
+                        )}
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+              </div>
+            </div>
+          </div>
+
+          <Disclosure.Panel className="sm:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {navigation.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={classNames(
+                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    'block px-3 py-2 rounded-md text-base font-medium'
+                  )}
+                  aria-current={item.current ? 'page' : undefined}
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
+  )
 }
