@@ -8,7 +8,7 @@ const navigation = [
   { name: 'Menu ', href: '/MenuList_2', current: false },
   { name: 'Events', href: '/Events', current: false },
   { name: 'Search', href: '/Search', current: false },
-  { name: 'Contact us', href: '/ContactUs', current: false },
+  { name: 'Contact us', href: '/SignupForm', current: false },
 ]
 
 function classNames(...classes) {
