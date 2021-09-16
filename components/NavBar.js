@@ -1,18 +1,18 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon , search} from '@heroicons/react/outline'
+import { Fragment } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { BellIcon, MenuIcon, XIcon, search } from "@heroicons/react/outline";
 
 const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'Menu ', href: '/MenuList_2', current: false },
-  { name: 'Events', href: '/Events', current: false },
-  { name: 'Search', href: '/Search', current: false },
-  { name: 'Contact us', href: '/SignupForm', current: false },
-]
+  { name: "Home", href: "/", current: true },
+  { name: "Menu ", href: "/MenuList_2", current: false },
+  { name: "Events", href: "/Events", current: false },
+  { name: "Search", href: "/Search", current: false },
+  { name: "Contact us", href: "/SignupForm", current: false },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
@@ -35,17 +35,10 @@ export default function Navbar() {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
-                <img
-                        className="h-10 w-10 "
-                        src="/images/logo.jpg"
-                        alt=""
-                      />
-                    <a
-                            href="#"
-                            className="text-sbtBlue text-xl font-extrabold"
-                          >
-                           Just add Tomatoes
-                          </a>
+                  <img className="h-10 w-10 " src="/images/logo.jpg" alt="" />
+                  <a href="/" className="text-sbtBlue text-xl font-extrabold">
+                    Just add Tomatoes
+                  </a>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
@@ -54,9 +47,11 @@ export default function Navbar() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? ' text-sbtBlue text-xl font-medium' : 'border-transparent hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium'
+                          item.current
+                            ? " text-sbtBlue text-xl font-medium px-3 py-2 hover:border-sbtOrange hover:text-sbtOrange "
+                            : "border-transparent hover:border-sbtOrange hover:text-sbtOrange px-3 py-2 text-xl font-medium"
                         )}
-                        aria-current={item.current ? 'page' : undefined}
+                        aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
                       </a>
@@ -65,14 +60,16 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-               
-
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative z-50">
                   <div>
-                    <Menu.Button className="bg-sky-200 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                    <Menu.Button className="">
                       <span className="sr-only">Open user menu</span>
-                      <search className="h-10 w-10" aria-hidden="true" />
+                      <img
+                        className="h-10 w-10 "
+                        src="/images/search.png"
+                        alt=""
+                      />
                     </Menu.Button>
                   </div>
                   <Transition
@@ -89,9 +86,25 @@ export default function Navbar() {
                         {({ active }) => (
                           <a
                             href="/PlayAVideo"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
-                              Video
+                            Video
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="/Search"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            Search
                           </a>
                         )}
                       </Menu.Item>
@@ -99,19 +112,12 @@ export default function Navbar() {
                         {({ active }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
-                            item 2
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                             item 3
+                            item 3
                           </a>
                         )}
                       </Menu.Item>
@@ -129,10 +135,12 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block px-3 py-2 rounded-md text-base font-medium"
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </a>
@@ -142,5 +150,5 @@ export default function Navbar() {
         </>
       )}
     </Disclosure>
-  )
+  );
 }
