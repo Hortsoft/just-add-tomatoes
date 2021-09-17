@@ -15,7 +15,7 @@ export default function SignupForm() {
       <FP_Banner title="Contact Us" description="Leave us a message please!" />
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8 m-5">
         <div className="border p-4 text-center col-span-1 lg:col-span-2">
-        <div class="p-8 ..."> 
+        <div className="p-8 ..."> 
          <h3 className="text-2xl font-semibold text-sbtBlue lg:text-3xl">
               Contact Address Details:
              </h3> 
