@@ -83,7 +83,7 @@ export default function Events_Manager() {
           </div>
           <div className="border p-4 text-center col-span-1 lg:col-span-2">
             <h3 className="text-2xl font-semibold text-sbtBlue lg:text-3xl">
-              Fill out the form to register for an event.
+              Fill out the form to register for the event.
             </h3>
             <br />
             <EventRegistration />
