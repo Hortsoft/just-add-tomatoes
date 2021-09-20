@@ -2,6 +2,8 @@ import react, { useState } from "react";
 import { createClient } from "contentful";
 import Link from "next/link";
 import RecipeCard from "../components/RecipeCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export async function getStaticProps() {
   //const client = createClient ({
@@ -25,51 +27,37 @@ export async function getStaticProps() {
 }
 
 export default function Search({ blogposts }) {
-  // const searchArticles = (event) => {
-  //   event.preventDefault(); // don't redirect the page
-  //   // get value entered into box
-  //   const searchValue = event.target.name.value.toLowerCase();
-  //   alert(searchValue)
-  //   let result = [];
-  //   result = blogposts.filter((blogpost) => {
-  //     return blogpost.description.search(value) != -1;
-  //   });
-  //   blogposts = result;
-  // };
-  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
 
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+    const newFilter = blogposts.filter((blogpost) => {
+      return blogpost.fields.title.toLowerCase().includes(searchWord.toLowerCase());
+    });
+    setFilteredBlogs(newFilter);
+  };
+
+ 
   return (
     <div className="container my-12 mx-auto px-3 md:px-12">
       <div className="flex flex-wrap -mx-1 lg:-mx-4">
         <div className="p-8">
           <div className="bg-white flex items-center shadow-xl">
-            <form>
-              <input
-                id="name"
-                type="text"
-                placeholder="search..."
-                autoComplete="name"
-                onChange={(event) => {
-                  setSearchTerm(event.target.value);
-                }}
-              />
-            </form>
+            <FontAwesomeIcon icon={faSearch} />
+            <input
+              id="name"
+              type="text"
+              placeholder="search articles..."
+              autoComplete="name"
+              onChange={handleFilter}
+            />
           </div>
         </div>
         <div className="container my-12 mx-auto px-6 md:px-12">
           <div className="flex flex-wrap -mx-1 lg:-mx-4">
-            {blogposts.filter((val) => {
-                if (searchTerm == "") {
-                  return val;
-                } else if (
-                  val.includes(searchTerm.toLowerCase())
-                ) {
-                  return val;
-                }
-              })
-              .map((blogpost) => (
-                <RecipeCard key={blogpost.sys.id} blogpost={blogpost} />
-              ))}
+          {filteredBlogs.map((blogpost) => (
+              <RecipeCard key={blogpost.sys.id} blogpost={blogpost} />
+            ))}
           </div>
         </div>
       </div>

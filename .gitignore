@@ -32,3 +32,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+pages/Search3.js
+pages/Search_2.js
+pages/Search_1.js
+components/EventList.js

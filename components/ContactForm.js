@@ -24,6 +24,7 @@ const ContactForm = () => {
               className="border  py-2 px-3 text-grey-darkest border-sbtOrange"
               id="firstname"
               type="text"
+              required
               aria-label="first name"
               placeholder="Enter first Name"
             />
@@ -43,6 +44,7 @@ const ContactForm = () => {
               type="text"
               aria-label="Last Name"
               placeholder="Enter last name"
+              required
             />
           </div>
         </div>
@@ -60,6 +62,7 @@ const ContactForm = () => {
               type="email"
               aria-label="email address"
               placeholder="Enter your email address"
+              required
             />
           </div>
         </div>
