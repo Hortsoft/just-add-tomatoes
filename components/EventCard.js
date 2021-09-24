@@ -1,8 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function RecipeCard({ blogpost }) {
-  const { title, cookingTime, slug, heroImage } = blogpost.fields;
+export default function EventCard({ event }) {
+  const {
+    eventTitle,
+    eventDescription,
+    eventDate,
+    eventInfo,
+    eventLink,
+    heroImage,
+    slug
+  } = event.fields;
 
   return (
     <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
@@ -12,7 +20,7 @@ export default function RecipeCard({ blogpost }) {
             src={"https:" + heroImage.fields.file.url}
             width={heroImage.fields.file.details.image.width}
             height={heroImage.fields.file.details.image.height}
-            alt="Hi" 
+            alt="Hi"
           />{" "}
         </div>
         {/* <Image
@@ -23,18 +31,17 @@ export default function RecipeCard({ blogpost }) {
         />  */}
         <header className="flex items-center justify-between leading-tight p-2 md:p-4">
           <h1 className="text-lg tracking-tight hover:border-sbtOrange hover:text-sbtOrange ">
-            {title}{" "}
+            {eventTitle}{" "}
           </h1>
-        
         </header>
-
+        <div className="flex items-center justify-between leading-tight p-2 md:p-4">
+          <p className="text-sm py-11 align-text-middle">{eventDescription} </p>
+        </div>
         <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-          <Link href={"/recipes/" + slug}>
+          <Link href={"/events/" + slug}>
             <a>Click to view </a>
-          </Link>  {" "}
-          <p className="text-sm py-11 align-text-bottom">
-            {cookingTime} mins to read
-          </p>
+          </Link>{" "}
+          <p className="text-sm py-11 align-text-bottom">{eventDate}</p>
         </footer>
       </article>
     </div>

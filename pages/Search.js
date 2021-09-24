@@ -28,16 +28,23 @@ export async function getStaticProps() {
 
 export default function Search({ blogposts }) {
   const [filteredBlogs, setFilteredBlogs] = useState([]);
-
+  
+   
+  
   const handleFilter = (event) => {
     const searchWord = event.target.value;
     const newFilter = blogposts.filter((blogpost) => {
-      return blogpost.fields.title.toLowerCase().includes(searchWord.toLowerCase());
+      return blogpost.fields.title
+        .toLowerCase()
+        .includes(searchWord.toLowerCase());
     });
-    setFilteredBlogs(newFilter);
+    if (searchWord !== "") {
+      setFilteredBlogs(newFilter);
+    } else {
+      setFilteredBlogs(blogposts);
+    }
   };
 
- 
   return (
     <div className="container my-12 mx-auto px-3 md:px-12">
       <div className="flex flex-wrap -mx-1 lg:-mx-4">
@@ -55,9 +62,17 @@ export default function Search({ blogposts }) {
         </div>
         <div className="container my-12 mx-auto px-6 md:px-12">
           <div className="flex flex-wrap -mx-1 lg:-mx-4">
-          {filteredBlogs.map((blogpost) => (
+          
+            {filteredBlogs.length > 1 ?
+
+              filteredBlogs.map((blogpost) => (
               <RecipeCard key={blogpost.sys.id} blogpost={blogpost} />
-            ))}
+            ))
+            :
+            blogposts.map((blogpost) => (
+              <RecipeCard key={blogpost.sys.id} blogpost={blogpost} />
+            ))
+            }
           </div>
         </div>
       </div>

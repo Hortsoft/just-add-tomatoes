@@ -3,30 +3,15 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon, search } from "@heroicons/react/outline";
 
-import { createClient } from "contentful"; 
-import MenuLink from "./MenuLink";
 
-// contenful link
-export async function getStaticProps() {
-  const client = createClient({
-    space: "8s27tytzwtrj",
-    accessToken: "HjT_z6HggNCGS1sG0lmq-uwXpC3ydF_jr73-70w67NU",
-  });
+// import MenuLink from "./MenuLink";
 
-  const res = await client.getEntries({ content_type: "blogPost" });
 
-  return {
-    props: {
-      blogposts: res.items,
-      revalidate: 1,
-    },
-  };
-}
 
 const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "Anything ", href: "/MenuList_2", current: false },
-  { name: "Events", href: "/Events_Manager", current: false },
+  { name: "Events", href: "/Event_Manager", current: false },
   { name: "Search", href: "/Search", current: false },
   { name: "Contact us", href: "/SignupForm", current: false },
 ];
@@ -35,7 +20,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar({ blogposts }) {
+
+
+export default function Navbar( ) {
   return (
     <Disclosure as="nav" className="bg-white">
       {({ open }) => (
@@ -60,7 +47,7 @@ export default function Navbar({ blogposts }) {
                     Just add Tomatoes
                   </a>
                 </div>
-                <div className="hidden sm:block sm:ml-6">
+                <div className="hidden sm:block sm:ml-6">  
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <a
@@ -167,21 +154,11 @@ export default function Navbar({ blogposts }) {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      
                         <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="/PlayAVideo"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Video
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          <MenuLink />
+                          {" "}
+                         
+                           
                         </Menu.Item>
                       </Menu.Items>
                     </Transition>

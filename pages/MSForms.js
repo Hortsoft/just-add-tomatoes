@@ -16,13 +16,16 @@ export default function MSForm() {
              
         </div>
         <div   className="col-span-8 bg-white">
-<Iframe url="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__ZUPD19UNTVBRkdaUDdHTEJVWktGNVNQQjEzTVZDQy4u&embed=true"
+<Iframe url="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__ZUPD19UNTVBRkdaUDdHTEJVWktGNVNQQjEzTVZDQy4u"
         width="1240px"
         height="1000px"
         id="myId"
         className="myClassname"
         display="initial"
-        position="relative"/>
+        position="relative"
+        navbar="off"
+         cmdbar="false"
+         />
           </div>
           </div>
     <div className="col-span-2">
