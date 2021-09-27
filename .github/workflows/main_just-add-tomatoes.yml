@@ -54,3 +54,10 @@ jobs:
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_ae87d1541b854423ba01cc8af1bb9f6d }}
         package: .
+
+  on:
+  push:
+    branches:
+      - master
++ repository_dispatch:
++   types: [contentful.deploy]
