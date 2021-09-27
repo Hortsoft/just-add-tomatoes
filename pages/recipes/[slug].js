@@ -3,6 +3,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "next/image";
 import Skeleton from "../../components/Skeleton";
 import BlogBanner from "../../components/BlogBanner";
+import ReactReadMoreReadLess from "react-read-more-read-less";
 
 const client = createClient({
   // created at top level putside both functions
@@ -64,6 +65,10 @@ export default function RecipeDetails({ blogpost }) {
   const { title, description, method, author, publishDate, thumbnail } =
     blogpost.fields;
 
+  // read more less text
+  const longText =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fermentum venenatis pulvinar. Proin vitae lectus urna. Sed erat ipsum, maximus a elit nec, condimentum placerat ex. Ut tincidunt mi eget condimentum mollis. Pellentesque aliquam velit quis est varius, sed molestie dolor ultrices. Pellentesque eget dapibus eros, at blandit arcu. Duis id purus quis mi porttitor viverra vel tempus elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos posuere";
+
   return (
     <>
       <BlogBanner blogposts={blogpost.fields} />
@@ -83,7 +88,20 @@ export default function RecipeDetails({ blogpost }) {
               <h3 className="mx-auto mt-4 mb-4 text-xl font-semibold text-black">
                 Information
               </h3>
+              
               {documentToReactComponents(method)}
+            </div>{" "}
+            <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
+              {" "}
+              <ReactReadMoreReadLess
+                charLimit={200}
+                readMoreText={"Read more ▼"}
+                readLessText={"Read less ▲"}
+                readMoreClassName="read-more-less--more"
+                readLessClassName="read-more-less--less"
+              >
+                {longText}
+              </ReactReadMoreReadLess>
             </div>
             <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
               <p className="mx-auto mt-4 mb-4 text-xl font-semibold text-black">
@@ -92,11 +110,12 @@ export default function RecipeDetails({ blogpost }) {
             </div>
             <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
               <p className="mx-auto mt-4 mb-4 text-xl font-semibold text-black">
-                Tags</p>
-             
-                 {blogpost.metadata.tags.map(name => (
-                <span key={name}>{ name }</span>                  
-              ))}  
+                Tags
+              </p>
+
+              {blogpost.metadata.tags.map((name) => (
+                <span key={name}>{name}</span>
+              ))}
             </div>
           </div>
           <div className="col-span-2">

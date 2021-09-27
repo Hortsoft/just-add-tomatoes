@@ -39,9 +39,9 @@ export default function Search({ blogposts }) {
         .includes(searchWord.toLowerCase());
     });
     if (searchWord !== "") {
-      setFilteredBlogs(newFilter);
+       setFilteredBlogs(newFilter);
     } else {
-      setFilteredBlogs(blogposts);
+     setFilteredBlogs( blogposts);
     }
   };
 

@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
+import ImageFadeIn from "react-image-fade-in";
+
 export default function Banner(props) {
   const blogpost = props.blogposts;
 
@@ -40,13 +42,14 @@ export default function Banner(props) {
     </div>
   </div>
       <div className="absolute top-0 right-0 block w-9/12 h-full">
-        <Image
+        <ImageFadeIn 
           src={"https:" + blogpost.thumbnail.fields.file.url}
           width={1600}
           height={462}
           alt=""
           className="object-cover min-w-full h-full"
         />
+
       </div>
     </div>
   );

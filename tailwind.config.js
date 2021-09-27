@@ -1,11 +1,12 @@
 const plugin = require("tailwindcss/plugin");
 const colors = require("tailwindcss/colors");
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    colors: {
+      colors: {
       transparent: 'transparent',
       current: 'currentColor',
 
@@ -24,6 +25,7 @@ module.exports = {
       minHeight: {
         "screen-75": "75vh",
       },
+      
       fontSize: {
         55: "55rem",
       },

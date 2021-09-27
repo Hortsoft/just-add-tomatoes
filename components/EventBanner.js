@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import ImageFadeIn from "react-image-fade-in";
 
 export default function EventBanner(props) {
   const event = props.event;
@@ -40,7 +41,7 @@ export default function EventBanner(props) {
     </div>
   </div>
       <div className="absolute top-0 right-0 block w-9/12 h-full">
-        <Image
+        <ImageFadeIn
           src={"https:" + event.heroImage.fields.file.url}
           width={1600}
           height={462}
