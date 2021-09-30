@@ -1,12 +1,12 @@
 import React, { lazy } from "react";
 import { createClient } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+//import RichTextToReact from 'rich-text-to-react';
 //import Iframe from "react-iframe";
 import Image from "next/image";
 import Link from "next/link";
 import Skeleton from "../../components/Skeleton";
 import EventBanner from "../../components/EventBanner";
-
 
 const client = createClient({
   // created at top level putside both functions
@@ -70,6 +70,8 @@ export default function EventDetails({ event }) {
     eventDate,
     eventInfo,
     eventWebUrl,
+    iFrameSrc,
+    iFrameSysid,
     heroImage,
     slug,
   } = event.fields;
@@ -78,14 +80,14 @@ export default function EventDetails({ event }) {
     <>
       <EventBanner event={event.fields} />
       <div className="bg-white-50 pt-10">
-        <div className="max-w-11xl mx-auto grid grid-cols-12 bg-white-200">
-          <div className="col-span-2">
+        <div className="max-w-11xl mx-auto grid grid-cols-12 gap-6 ">
+          <div className="col-span-2 ">
             <h3 className="mx-auto mb-6 text-2xl font-semibold text-black lg:text-3xl">
               {" "}
               side stuff
             </h3>
           </div>
-          <div className="col-span-8 bg-white">
+          <div className="col-span-5 bg-white">
             <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
               <h2 className="mx-auto mt-4 mb-4 text-xl font-sans font-semibold text-black">
                 {eventTitle}
@@ -102,28 +104,24 @@ export default function EventDetails({ event }) {
                 {documentToReactComponents(eventInfo)}
               </span>
             </div>
-            <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
-              <h3 className="mx-auto mt-4 mb-4 text-xl font-semibold text-black">
-                Event Info
-              </h3>
-              <div>
-                <a
-                  target="_blank"
-                  href={eventWebUrl}
-                  onClick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=350,height=250')"
-                  className="text-sbtOrange bg-sbtBlue border border-solid border-sbtOrange hover:bg-sbtOrange hover:text-white active:bg-sbtOrange font-normal w-40  text-xl px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1   ease-linear transition-all duration-150"
-                >
-                  Subscribe to our event
-                </a>
-              </div>
+   <h3 className="mx-auto mt-4 mb-4 text-xl font-semibold text-black">
+              Event Info
+            </h3> <a
+              target="_blank"
+              href={eventWebUrl}
+              onClick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=350,height=250')"
+              className="text-sbtOrange bg-sbtBlue border border-solid border-sbtOrange hover:bg-sbtOrange hover:text-white active:bg-sbtOrange font-normal w-40  text-xl px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1   ease-linear transition-all duration-150"
+            >
+              Subscribe to our event
+            </a>
+            </div>
+          <div className="col-span-5 bg-white">
+            <div className="aspect-w-16 aspect-h-9"> 
+              <iframe frameBorder="0" src={iFrameSrc} id={iFrameSysid}></iframe>
             </div>
           </div>
-          <div className="col-span-2">
-            <h3 className="mx-auto mb-6 text-2xl font-semibold text-black lg:text-xl">
-              {" "}
-              side stuff
-            </h3>
-          </div>
+         
+          
         </div>
       </div>
     </>
