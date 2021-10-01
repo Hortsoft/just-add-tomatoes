@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Skeleton from "../../components/Skeleton";
 import EventBanner from "../../components/EventBanner";
+import IframeContainer from "../../components/IframeContainer";
 
 const client = createClient({
   // created at top level putside both functions
@@ -104,9 +105,10 @@ export default function EventDetails({ event }) {
                 {documentToReactComponents(eventInfo)}
               </span>
             </div>
-   <h3 className="mx-auto mt-4 mb-4 text-xl font-semibold text-black">
+            <h3 className="mx-auto mt-4 mb-4 text-xl font-semibold text-black">
               Event Info
-            </h3> <a
+            </h3>{" "}
+            <a
               target="_blank"
               href={eventWebUrl}
               onClick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=350,height=250')"
@@ -114,14 +116,13 @@ export default function EventDetails({ event }) {
             >
               Subscribe to our event
             </a>
-            </div>
+          </div>
           <div className="col-span-5 bg-white">
-            <div className="aspect-w-16 aspect-h-9"> 
+            <div className="aspect-w-16 aspect-h-9">
+              {/* <IframeContainer src={iFrameSrc} id={iFrameSysid} />  */}
               <iframe frameBorder="0" src={iFrameSrc} id={iFrameSysid}></iframe>
             </div>
           </div>
-         
-          
         </div>
       </div>
     </>
