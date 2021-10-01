@@ -1,6 +1,11 @@
 const plugin = require("tailwindcss/plugin");
 const colors = require("tailwindcss/colors");
 const { fontFamily } = require('tailwindcss/defaultTheme')
+fontFamily['sans'] = [
+  'Segoe UI', // <-- Roboto is a default sans font now
+  'system-ui',
+  // <-- you may provide more font fallbacks here
+];
 
 module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],

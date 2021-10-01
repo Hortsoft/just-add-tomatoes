@@ -92,7 +92,7 @@ export default function EventDetails({ event }) {
               <h2 className="mx-auto mt-4 mb-4 text-xl font-sans font-semibold text-black">
                 {eventTitle}
               </h2>
-              <p className="mx-auto mt-4 mb-4 text-xl font-sans font-semibold text-black">
+              <p className="mx-auto mt-4 mb-4 text-xl font-sans font-normal text-black">
                 {eventDate}
               </p>
             </div>
@@ -100,7 +100,7 @@ export default function EventDetails({ event }) {
               <h3 className="mx-auto mt-4 mb-4 text-xl font-semibold text-black">
                 Event Info
               </h3>
-              <span className="mx-auto mt-4 mb-4 font-sans text-xl font-semibold text-black">
+              <span className="mx-auto mt-4 mb-4 font-sans text-xl font-normal text-black">
                 {documentToReactComponents(eventInfo)}
               </span>
             </div>
@@ -113,7 +113,7 @@ export default function EventDetails({ event }) {
               onClick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=350,height=250')"
               className="text-sbtOrange bg-sbtBlue border border-solid border-sbtOrange hover:bg-sbtOrange hover:text-white active:bg-sbtOrange font-normal w-40  text-xl px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1   ease-linear transition-all duration-150"
             >
-              Subscribe to our event
+              Register for our event!
             </a>
           </div>
           <div className="col-span-5 bg-white">

@@ -82,14 +82,16 @@ export default function RecipeDetails({ blogpost }) {
           </div>
           <div className="col-span-8 bg-white">
             <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
-              <p>{description}</p>
+            <h2 className="mx-auto mt-4 mb-4 text-xl font-sans font-semibold text-black">{title}</h2>
+            <span className="mx-auto mt-4 mb-4 font-sans text-xl font-normal text-black">{description}</span>
             </div>
             <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
-              <h3 className="mx-auto mt-4 mb-4 text-xl font-semibold text-black">
+              <h3 className="mx-auto mt-4 mb-4 text-xl font-normal text-black">
                 Information
               </h3>
-              
+              <span className="mx-auto mt-4 mb-4 font-sans text-xl font-normal text-black">
               {documentToReactComponents(method)}
+              </span>
             </div>{" "}
             <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
               {" "}
@@ -100,11 +102,12 @@ export default function RecipeDetails({ blogpost }) {
                 readMoreClassName="read-more-less--more"
                 readLessClassName="read-more-less--less"
               >
+               
                 {longText}
               </ReactReadMoreReadLess>
             </div>
             <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
-              <p className="mx-auto mt-4 mb-4 text-xl font-semibold text-black">
+              <p className="mx-auto mt-4 mb-4 text-xl font-normal text-black">
                 {publishDate}
               </p>
             </div>
