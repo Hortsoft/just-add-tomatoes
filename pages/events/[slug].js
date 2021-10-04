@@ -117,7 +117,7 @@ export default function EventDetails({ event }) {
             </a>
           </div>
           <div className="col-span-5 bg-white">
-            <div className="aspect-w-16 aspect-h-9">
+            <div className="h-auto">
               <IframeContainer event={event.fields} /> 
               {/* <iframe frameBorder="0" src={iFrameSrc} id={iFrameSysid}></iframe> */}
             </div>
