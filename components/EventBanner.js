@@ -3,6 +3,7 @@ import Image from "next/image";
 import ImageFadeIn from "react-image-fade-in";
 
 export default function EventBanner(props) {
+
   const event = props.event;
 
   return (
@@ -12,7 +13,7 @@ export default function EventBanner(props) {
           <h2 className="text-5xl">{event.eventTitle}</h2>
           <span></span> <br />
           <p className="text-sm">{event.eventDate} </p>
-          <p className="text-base">{event.eventDescription} </p>
+          <p className="text-base pb-4">{event.eventDescription}  </p>
           <button
             className="text-sbtOrange bg-sbtBlue border border-solid border-sbtOrange hover:bg-sbtOrange hover:text-white active:bg-sbtOrange font-normal w-40  text-xl px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1   ease-linear transition-all duration-150"
             type="button"
