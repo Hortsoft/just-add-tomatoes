@@ -5,8 +5,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "next/image";
 import Link from "next/link";
 import Skeleton from "../../components/Skeleton";
-import EventBanner from "../../components/EventBanner"; 
-import IframeContainer from "../../components/IframeContainer";
+import EventBanner from "../../components/EventBanner";  
 
 const client = createClient({
   // created at top level putside both functions
@@ -118,8 +117,8 @@ export default function EventDetails({ event }) {
           </div>
           <div className="col-span-5 bg-white">
             <div className="h-auto">
-              <IframeContainer event={event.fields} /> 
-              {/* <iframe frameBorder="0" src={iFrameSrc} id={iFrameSysid}></iframe> */}
+              {/* <IframeContainer event={event.fields} />  */}
+              <iframe frameBorder="0" src={iFrameSrc} id={iFrameSysid}></iframe>
             </div>
           </div>
         </div>
