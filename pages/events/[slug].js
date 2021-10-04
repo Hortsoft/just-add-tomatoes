@@ -86,7 +86,7 @@ export default function EventDetails({ event }) {
               side stuff
             </h3>
           </div>
-          <div className="col-span-5 bg-white">
+          <div className="col-span-4 bg-white">
             <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
               <h2 className="mx-auto mt-4 mb-4 text-xl font-sans font-semibold text-black">
                 {eventTitle}
@@ -115,8 +115,8 @@ export default function EventDetails({ event }) {
               Register for our event!
             </a>
           </div>
-          <div className="col-span-5 bg-white">
-            <div className="h-auto">
+          <div className="col-span-6 bg-white">
+            <div className="aspect-w-16 aspect-h-9">
               {/* <IframeContainer event={event.fields} />  */}
               <iframe frameBorder="0" src={iFrameSrc} id={iFrameSysid}></iframe>
             </div>
