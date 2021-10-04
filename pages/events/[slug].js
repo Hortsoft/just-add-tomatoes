@@ -73,7 +73,7 @@ export default function EventDetails({ event }) {
     iFrameSrc,
     iFrameSysid,
     heroImage,
-    slug,
+    slug
   } = event.fields;
 
   return (
