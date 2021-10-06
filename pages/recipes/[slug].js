@@ -1,5 +1,6 @@
 import { createClient } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
 import Skeleton from "../../components/Skeleton";
 import BlogBanner from "../../components/BlogBanner";
@@ -55,6 +56,97 @@ export async function getStaticProps({ params }) {
 export default function RecipeDetails({ blogpost }) {
   // run a check to see if page exists , if not show fall back page
 
+  const richtext_options = {
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (node, children) => {
+        return <p className="text-gray-900"> {children}</p>;
+      },
+      [INLINES.HYPERLINK]: (node, children) => {
+        console.log(node);
+        return (
+          <a className="text-blue-400" href={node.data.uri}>
+            {" "}
+            {children}
+          </a>
+        );
+      },
+      [INLINES.EMBEDDED_ENTRY]: (node, children) => {
+        console.log(node);
+        // you html code goes here
+        return (
+          <div className="max-w-xs rounded overflow-hidden shadow-lg my-2">
+            {" "}
+             <Image
+              className="w-full"
+              src={`https://${node.data.target.fields.heroImage.fields.file.url}`}
+              height={node.data.target.fields.heroImage.fields.file.details.image.height}
+              width={node.data.target.fields.heroImage.fields.file.details.image.width}
+              alt={node.data.target.fields.description}
+            />
+             <div className="px-6 py-4">
+             <div className="font-bold text-xl mb-2">{node.data.target.fields.eventTitle}</div>
+             <p className="text-grey-darker text-base"> {node.data.target.fields.eventDate}
+            {node.data.target.fields.eventDescription}</p></div>
+            <div className="px-6 py-4">
+            <a href={`https://just-add-tomatoes.azurewebsites.net/events/${node.data.target.fields.slug}`}>   {node.data.target.fields.eventTitle}</a>
+            </div>
+</div>
+        );
+      },
+      [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
+        // target the contentType of the EMBEDDED_ENTRY to display as you need
+        console.log(node);
+        if (node.data.target.sys.contentType.sys.id === "codeBlock") {
+          return (
+            <pre>
+              <code>{node.data.target.fields.code}</code>
+            </pre>
+          );
+        }
+
+        if (node.data.target.sys.contentType.sys.id === "videoEmbed") {
+          return (
+            <iframe
+              src={node.data.target.fields.embedUrl}
+              height="100%"
+              width="100%"
+              frameBorder="0"
+              scrolling="no"
+              title={node.data.target.fields.title}
+              allowFullScreen={true}
+            />
+          );
+        }
+      },
+      [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
+        console.log(node);
+        // render the EMBEDDED_ASSET as you need iage and video
+
+        if (node.data.target.fields.file.contentType === "video/mp4") {
+          return (
+            <video
+              src={`https://${node.data.target.fields.file.url}`}
+              autoPlay
+              muted
+              alt={node.data.target.fields.description}
+            />
+          );
+        } else if (node.data.target.fields.file.contentType === "image/jpeg") {
+          return (
+            <Image
+              src={`https://${node.data.target.fields.file.url}`}
+              height={node.data.target.fields.file.details.image.height}
+              width={node.data.target.fields.file.details.image.width}
+              alt={node.data.target.fields.description}
+            />
+          );
+        } else {
+          return <p>Unknown content type</p>;
+        }
+      },
+    },
+  };
+
   if (!blogpost)
     return (
       <div>
@@ -82,15 +174,16 @@ export default function RecipeDetails({ blogpost }) {
           </div>
           <div className="col-span-8 bg-white">
             <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
-            <h2 className="mx-auto mt-4 mb-4 text-xl font-sans font-semibold text-black">{title}</h2>
-            <span className="mx-auto mt-4 mb-4 font-sans text-xl font-normal text-black">{description}</span>
+              <h2 className="mx-auto mt-4 mb-4 text-xl font-sans font-semibold text-black">
+                {title}
+              </h2>
             </div>
             <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
               <h3 className="mx-auto mt-4 mb-4 text-xl font-normal text-black">
                 Information
               </h3>
               <span className="mx-auto mt-4 mb-4 font-sans text-xl font-normal text-black">
-              {documentToReactComponents(method)}
+                {documentToReactComponents(method, richtext_options)}
               </span>
             </div>{" "}
             <div className="mx-auto text-base font-medium leading-relaxed text-gray-800">
@@ -102,7 +195,6 @@ export default function RecipeDetails({ blogpost }) {
                 readMoreClassName="read-more-less--more"
                 readLessClassName="read-more-less--less"
               >
-               
                 {longText}
               </ReactReadMoreReadLess>
             </div>
