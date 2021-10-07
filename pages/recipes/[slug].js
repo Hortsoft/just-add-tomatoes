@@ -1,6 +1,6 @@
 import { createClient } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
 import Skeleton from "../../components/Skeleton";
 import BlogBanner from "../../components/BlogBanner";
@@ -61,6 +61,7 @@ export default function RecipeDetails({ blogpost }) {
       [BLOCKS.PARAGRAPH]: (node, children) => {
         return <p className="text-gray-900"> {children}</p>;
       },
+       
       [INLINES.HYPERLINK]: (node, children) => {
         console.log(node);
         return (
@@ -76,31 +77,94 @@ export default function RecipeDetails({ blogpost }) {
         return (
           <div className="max-w-xs rounded overflow-hidden shadow-lg my-2">
             {" "}
-             <Image
+            <Image
               className="w-full"
               src={`https://${node.data.target.fields.heroImage.fields.file.url}`}
-              height={node.data.target.fields.heroImage.fields.file.details.image.height}
-              width={node.data.target.fields.heroImage.fields.file.details.image.width}
+              height={
+                node.data.target.fields.heroImage.fields.file.details.image
+                  .height
+              }
+              width={
+                node.data.target.fields.heroImage.fields.file.details.image
+                  .width
+              }
               alt={node.data.target.fields.description}
             />
-             <div className="px-6 py-4">
-             <div className="font-bold text-xl mb-2">{node.data.target.fields.eventTitle}</div>
-             <p className="text-grey-darker text-base"> {node.data.target.fields.eventDate}
-            {node.data.target.fields.eventDescription}</p></div>
             <div className="px-6 py-4">
-            <a href={`https://just-add-tomatoes.azurewebsites.net/events/${node.data.target.fields.slug}`}>   {node.data.target.fields.eventTitle}</a>
+              <div className="font-bold text-xl mb-2">
+                {node.data.target.fields.eventTitle}
+                {node.data.target.fields.title}
+              </div>
+              <p className="text-grey-darker text-base">
+                {" "}
+                {node.data.target.fields.eventDate}
+                {node.data.target.fields.eventDescription}
+              </p>
             </div>
-</div>
+            <div>
+              <a  className="font-semibold"
+                href={`https://just-add-tomatoes.azurewebsites.net/events/${node.data.target.fields.slug}`}
+              >
+                {" "}
+                link for event
+              </a> //
+              <a   className="font-semibold"
+                href={`https://just-add-tomatoes.azurewebsites.net/recipes/${node.data.target.fields.slug}`}
+              >
+                {" "}
+               link for article
+              </a>
+            </div>
+          </div>
         );
       },
       [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
         // target the contentType of the EMBEDDED_ENTRY to display as you need
         console.log(node);
-        if (node.data.target.sys.contentType.sys.id === "codeBlock") {
+        if (node.nodeType === "embedded-entry-block") {
           return (
-            <pre>
-              <code>{node.data.target.fields.code}</code>
-            </pre>
+            <div className="max-w-xs rounded overflow-hidden shadow-lg my-2">
+            {" "}
+            <Image
+              className="w-full"
+              src={`https://${node.data.target.fields.heroImage.fields.file.url}`}
+              height={
+                node.data.target.fields.heroImage.fields.file.details.image
+                  .height
+              }
+              width={
+                node.data.target.fields.heroImage.fields.file.details.image
+                  .width
+              }
+              alt={node.data.target.fields.description}
+            />
+            <div className="px-6 py-4">
+              <div className="font-bold text-xl mb-2">
+                {node.data.target.fields.eventTitle}  {node.data.target.fields.title}
+              </div>
+              <p className="text-grey-darker text-base">
+                {" "}
+                {node.data.target.fields.eventDate}
+                {node.data.target.fields.eventDescription}
+                {node.data.target.fields.description}
+                {node.data.target.fields.publishDate}
+              </p>
+            </div>
+            <div className="px-6 py-4">
+              <a
+                href={`https://just-add-tomatoes.azurewebsites.net/recipes/${node.data.target.fields.slug}`}
+              >
+                {" "}
+                article link
+              </a> //
+              <a
+                href={`https://just-add-tomatoes.azurewebsites.net/events/${node.data.target.fields.slug}`}
+              >
+                {" "}
+                event link
+              </a>
+            </div>
+          </div>
           );
         }
 
@@ -120,7 +184,7 @@ export default function RecipeDetails({ blogpost }) {
       },
       [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
         console.log(node);
-        // render the EMBEDDED_ASSET as you need iage and video
+        // render the EMBEDDED_ASSET as you need image or video
 
         if (node.data.target.fields.file.contentType === "video/mp4") {
           return (
