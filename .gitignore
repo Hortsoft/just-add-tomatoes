@@ -37,3 +37,5 @@ pages/Search_2.js
 pages/Search_1.js
 components/EventList.js
 components/IframeContainer.js
+
+.gitignore

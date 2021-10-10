@@ -61,7 +61,18 @@ export default function RecipeDetails({ blogpost }) {
       [BLOCKS.PARAGRAPH]: (node, children) => {
         return <p className="text-gray-900"> {children}</p>;
       },
-       
+      [BLOCKS.UL_LIST]: (node, children) => {
+        console.log(node);
+        return (
+          <ul className="list-disc pl-4"
+             
+          >
+            {children.map((item) => (
+              <li key={item.key}>{item.props.children[0].props.children[0]}</li>
+            ))}
+          </ul>
+        );
+      },
       [INLINES.HYPERLINK]: (node, children) => {
         console.log(node);
         return (
@@ -161,7 +172,7 @@ export default function RecipeDetails({ blogpost }) {
                 href={`https://just-add-tomatoes.azurewebsites.net/events/${node.data.target.fields.slug}`}
               >
                 {" "}
-                event link
+                event link   
               </a>
             </div>
           </div>

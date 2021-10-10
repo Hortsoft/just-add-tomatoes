@@ -31,7 +31,7 @@ export const getStaticPaths = async () => {
     fallback: true,
   };
 };
-// use getstatic props to get the detail for the single item we need at buidl time. to generate path based on the page we ar eo n (slug)
+// use getstatic props to get the detail for the single item we need at buiLD time. to generate path based on the page we ar eo n (slug)
 export async function getStaticProps({ params }) {
   const { items } = await client.getEntries({
     content_type: "event",

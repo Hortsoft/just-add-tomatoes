@@ -1,5 +1,6 @@
 import NavBar from '../components/NavBar'
-import Footer from '../components/Footer'
+import Footer from '../components/Footer' 
+
 
 export default function Layout({ children }) {
   return (
@@ -10,7 +11,7 @@ export default function Layout({ children }) {
       <div className="page-content">
         { children }
       </div>
-
+       
       <Footer />
     </div>
   )
