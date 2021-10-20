@@ -119,6 +119,11 @@ export default function EventDetails({ event }) {
             <div className="aspect-w-16 aspect-h-9">
               {/* <IframeContainer event={event.fields} />  */}
               <iframe frameBorder="0" src={iFrameSrc} id={iFrameSysid}></iframe>
+              {/* <iframe frameBorder="0" id={iFrameSysid}></iframe> */}
+              {/* <script>
+              var sandboxSrc = {iFrameSrc} + encodeURIComponent(document.location.toString()); 
+              document.getElementById({iFrameSysid}).setAttribute('src', sandboxSrc); 
+              </script>  */}
             </div>
           </div>
         </div>

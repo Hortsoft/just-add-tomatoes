@@ -1,18 +1,12 @@
 import React from "react";
 import Link from "next/link";
- import FooterSponsors from "../components/Footer_Sponsors";
+import FooterSponsors from "../components/Footer_Sponsors";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-//imags
-// import  earth from "../images/earth.jpg";
-// import { Groot } from "../images/Groot.jpg";
-// import { Mario } from "../images/Mario.jpg";
-// import { Yoshi } from "../images/Yoshi.jpg";
-// import { Luigi } from "../images/Luigi.jpg";
-
+ 
 
 export default function Footer() {
   return (
