@@ -124,12 +124,14 @@ export default function EventDetails({ event }) {
               var sandboxSrc = `{iFrameSrc}` + encodeURIComponent(document.location.toString()); 
               document.getElementById({iFrameSysid}).setAttribute('src', sandboxSrc); 
               </script>  */}
-              {/* <iframe id={iFrameSysid} 
-              src={`${iframeSrc} + encodeURIComponent(document.location.toString()); `} /> */}
               <iframe id={iFrameSysid} 
+              src={`"${iframeSrc}" + encodeURIComponent(document.location.toString()); `} /> 
+             
+
+              {/* <iframe id={iFrameSysid} 
               src={`
       https://61e6c1056f884679b2e346929200beee.svc.dynamics.com/t/formsandbox/S4ssGEBWZoLlEA9Rubsrwz-sh2_BRo-wOwjYkduyQTY/5438b12f-3c31-ec11-b6e6-00224810e444?ad=" 1+ encodeURIComponent(document.location.toString()); 
-      `} /> 
+      `} />  */}
 
             </div>
           </div>
