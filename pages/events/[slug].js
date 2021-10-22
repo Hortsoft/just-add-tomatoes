@@ -119,19 +119,23 @@ export default function EventDetails({ event }) {
             <div className="aspect-w-16 aspect-h-9">
               {/* <IframeContainer event={event.fields} />  */}
               {/* <iframe frameBorder="0" src={iFrameSrc} id={iFrameSysid}></iframe> */}
-              {/* <iframe frameBorder="0" id={iFrameSysid}></iframe>
-               
-              {` var sandboxSrc = ${iframeSrc} + encodeURIComponent(document.location.toString())`}; 
-              {`document.getElementById(${iFrameSysid}).setAttribute('src', sandboxSrc); `}
-              */}
-              {/* <iframe id={iFrameSysid} 
-              src={`"${iframeSrc}" + encodeURIComponent(document.location.toString()); `} />  */}
+              <iframe frameBorder="0" id={iFrameSysid}></iframe>
+{/*                
+            //  { 
+                const sandboxSrc = iframeSrc + encodeURIComponent(document.location.toString()) };
+              
+              { document.getElementById(iFrameSysid).setAttribute('src', sandboxSrc)} ; 
+                 */}
+             
+              <iframe id={iFrameSysid} 
+              src={iframeSrc}  
+              /> 
              
 
-              <iframe id={iFrameSysid} 
+              {/* <iframe id={iFrameSysid} 
               src={`
       https://61e6c1056f884679b2e346929200beee.svc.dynamics.com/t/formsandbox/S4ssGEBWZoLlEA9Rubsrwz-sh2_BRo-wOwjYkduyQTY/5438b12f-3c31-ec11-b6e6-00224810e444?ad=" + encodeURIComponent(document.location.toString()); 
-      `} /> 
+      `} />  */}
 
             </div>
           </div>
