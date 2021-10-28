@@ -4,6 +4,7 @@ import ProductBanner from "../components/ProductBanner";
 import { loadStripe } from "@stripe/stripe-js";
 import Stripe from "stripe";
 import { createCheckoutSession } from "next-stripe/client";
+//const createCheckoutSession = require('next-stripe');
 
 export async function getStaticProps() {
   const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
@@ -27,10 +28,11 @@ const onClick = async(priceId) => {
     const session = await createCheckoutSession({
             success_url: window.location.href,
             cancel_url: window.location.href,
-            line_items: [{price: priceId, quantity: 1}],
+            line_items: [{ price: priceId, quantity: 1 }],
             payment_method_types: ["card"],
             mode: "payment",            
     });
+
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
     if (stripe) {
         stripe.redirectToCheckout({ sessionId: session.id });
@@ -73,7 +75,7 @@ const onClick = async(priceId) => {
                   <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
                     onClick={() => onClick(price.id)}
-                  >{console.log(price.id)}
+                  > 
                     Click to buy{" "}
                   </button>{" "}
                   <p className="text-sm py-11 align-text-bottom">
