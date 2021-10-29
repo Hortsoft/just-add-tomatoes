@@ -1,48 +1,50 @@
 import { createClient } from "contentful";
 import Link from "next/link";
 import ProductBanner from "../components/ProductBanner";
-import { loadStripe } from "@stripe/stripe-js";
+
 import Stripe from "stripe";
-import { createCheckoutSession } from "next-stripe/client";
+
 //const createCheckoutSession = require('next-stripe');
 
-export async function getStaticProps() {
-  const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
-  const prices = await stripe.prices.list({
-    active: true,
-    limit: 3,
-    expand: ["data.product"],
-  });
 
-  return {
-    props: {
-      prices: prices.data,
-    },
-  };
-}
 
 export default function Store({ prices }) {
+  // const onClick = async (priceId) => {
+  //   try {
+  //     const session = await createCheckoutSession({
+  //       success_url: window.location.href,
+  //       cancel_url: window.location.href,
+  //       line_items: [
+  //         {
+  //           price: priceId,
+  //           quantity: 1,
+  //         },
+  //       ],
+  //       payment_method_types: ["card"],
+  //       mode: "payment",
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
 
-const onClick = async(priceId) => {
-    const session = await createCheckoutSession({
-            success_url: window.location.href,
-            cancel_url: window.location.href,
-            line_items: [{ price: priceId, quantity: 1 }],
-            payment_method_types: ["card"],
-            mode: "payment",            
-    });
-
-    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
-    if (stripe) {
-        stripe.redirectToCheckout({ sessionId: session.id });
-    }
-}
+  //   try {
+  //     const stripe = await loadStripe(
+  //       process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY
+  //     );
+  //     if (stripe) {
+  //       stripe.redirectToCheckout({ sessionId: session.id });
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>
       <ProductBanner />
       {/* <pre>{JSON.stringify(prices, null, 2)}</pre> */}
+       
       <div className="container my-12 mx-auto px-3 md:px-12">
         <div className="flex flex-wrap -mx-1 lg:-mx-4">
           {prices.map((price) => (
@@ -73,9 +75,9 @@ const onClick = async(priceId) => {
                 </div>
                 <footer className="flex items-center justify-between leading-none p-2 md:p-4">
                   <button
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
-                    onClick={() => onClick(price.id)}
-                  > 
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    //onClick={() => onClick(price.id)}
+                  >
                     Click to buy{" "}
                   </button>{" "}
                   <p className="text-sm py-11 align-text-bottom">
@@ -90,4 +92,23 @@ const onClick = async(priceId) => {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+
+  // create session
+ // const session = await getSession(req, res);
+  
+  const prices = await stripe.prices.list({
+    active: true,
+    limit: 3,
+    expand: ["data.product"],
+  });
+
+  return {
+    props: {
+      prices: prices.data,
+    },
+  };
 }
