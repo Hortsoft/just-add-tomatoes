@@ -3,42 +3,17 @@ import Link from "next/link";
 import ProductBanner from "../components/ProductBanner";
 
 import Stripe from "stripe";
+import StripeCheckout from 'react-stripe-checkout'; 
 
-//const createCheckoutSession = require('next-stripe');
-
-
+const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY;
 
 
 export default function Store({ prices }) {
-  // const onClick = async (priceId) => {
-  //   try {
-  //     const session = await createCheckoutSession({
-  //       success_url: window.location.href,
-  //       cancel_url: window.location.href,
-  //       line_items: [
-  //         {
-  //           price: priceId,
-  //           quantity: 1,
-  //         },
-  //       ],
-  //       payment_method_types: ["card"],
-  //       mode: "payment",
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
 
-  //   try {
-  //     const stripe = await loadStripe(
-  //       process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY
-  //     );
-  //     if (stripe) {
-  //       stripe.redirectToCheckout({ sessionId: session.id });
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const onToken = token => {
+    console.log(token);
+    alert('Payment Succesful!');
+};
 
   return (
     <>
@@ -74,12 +49,19 @@ export default function Store({ prices }) {
                   </p>
                 </div>
                 <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                  <button
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    //onClick={() => onClick(price.id)}
-                  >
-                    Click to buy{" "}
-                  </button>{" "}
+                  {" "}
+                  <StripeCheckout
+        label='Subscribe  Now'
+        name={`Service: ${ price.product.name}`}
+        billingAddress 
+        image={price.product.images[0]}
+        description={`Your total is $${(price.unit_amount / 100).toFixed(2)}`}
+        amount={price.unit_amount}
+        panelLabel='Pay Now'
+        token={onToken}
+        currency='nzd'
+        stripeKey={publishableKey}
+    />
                   <p className="text-sm py-11 align-text-bottom">
                     {" "}
                     Cost: ${(price.unit_amount / 100).toFixed(2)}

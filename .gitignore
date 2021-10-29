@@ -39,3 +39,14 @@ components/EventList.js
 components/IframeContainer.js
 
 .gitignore
+pages/Store_2.js 
+pages/api/stripe/[...nextstripe].js
+lib/get-stripe.js
+pages/api/checkout_sessions/index.js
+pages/cart/index.js
+pages/api/stripe/[...nextstripe].js
+pages/api/checkout_sessions/[id].js
+pages/api/stripe/[...nextstripe].js
+pages/api/checkout_sessions/[id].js
+pages/api/checkout_sessions/[id].js
+pages/api/stripe/[...nextstripe].js
