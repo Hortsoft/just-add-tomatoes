@@ -3,7 +3,7 @@ import FPBanner from "../../components/FP_Banner";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ContentPage() {
+export default function Content() {
   // run a check to see if page exists , if not show fall back page
 
   return (
@@ -15,7 +15,7 @@ export default function ContentPage() {
             <h3 className="mx-auto mb-6 text-2xl font-semibold text-black lg:text-3xl">
               {" "}
               <h4 className="title">
-                <Link href="/posts/first-post">
+                <Link href="./content/profile">
                   <a>Your profile</a>
                 </Link>
               </h4>
@@ -31,7 +31,7 @@ export default function ContentPage() {
               <h3 className="mx-auto mt-4 mb-4 text-xl font-semibold text-black">
                 Download this file{" "}
                 <a
-                  href="/mages/Umbrellas.pdf"
+                  href="/images/Umbrellas.pdf"
                   alt="alt text"
                   target="_blank"
                   rel="noopener noreferrer"
