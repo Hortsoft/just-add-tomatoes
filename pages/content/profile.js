@@ -2,7 +2,7 @@ import React, { lazy } from "react";
 import FPBanner from "../../components/FP_Banner";
 import Link from "next/link";
 import { getSession, signIn, signOut } from "next-auth/client";
-import dynamic from "next/dynamic";
+//import dynamic from "next/dynamic";
 
 // page always in an authenticated or unauthenticated state..
 // import Unauthenticated from "../../components/unauthenticated";

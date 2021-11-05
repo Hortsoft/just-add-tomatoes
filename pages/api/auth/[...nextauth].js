@@ -5,22 +5,6 @@ import Providers from 'next-auth/providers'
 const options = {
   site: process.env.NEXTAUTH_URL,
   providers: [
-    Providers.Email({
-      server: {
-        port: 465,
-        host: 'smtp.gmail.com',
-        secure: true,
-        auth: {
-          user: process.env.EMAIL_USERNAME,
-          pass: process.env.EMAIL_PASSWORD,
-        },
-        tls: {
-          rejectUnauthorized: false,
-        },
-      },
-      from: process.env.EMAIL_FROM,
-    }),
-  
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
@@ -32,11 +16,7 @@ const options = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   
-    Providers.Auth0({
-      clientId: process.env.AUTH0_ID,
-      clientSecret: process.env.AUTH0_SECRET,
-      domain: process.env.AUTH0_DOMAIN,
-    }),
+     
   ],
   session: {
     jwt: true,
